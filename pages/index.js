@@ -1,4 +1,4 @@
-import Pokelist from './components/pokelist'
+import PokeList from '@/components/PokeList'
 import Head from 'next/head'
 
 
@@ -12,7 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className="flex flex-wrap content-center align-center justify-center flex-col">
-        <Pokelist />
+        <PokeList />
       </main>
     </>
   )

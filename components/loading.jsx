@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Poke from '@/../public/Poke.svg'
+import Poke from "@/public/Poke.svg"
 
 export default function Loading() {
     return (

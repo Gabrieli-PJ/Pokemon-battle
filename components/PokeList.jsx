@@ -1,8 +1,8 @@
 // components/PokeList.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import PokemonItem from './PokemonItem';
-import Loading from '../components/loading';
+import PokemonItem from './PokeItem';
+import Loading from './loading';
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 
