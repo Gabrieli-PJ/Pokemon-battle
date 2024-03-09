@@ -1,3 +1,4 @@
+import Image from "next/image";
 import PokeAction from "./PokeActions";
 
 const formatPokedexNumber = (number) => {
@@ -58,7 +59,9 @@ const PokemonItem = ({ name, types, imageUrl, id }) => {
     <div className="rounded border-2 border-red-500 bg-red-400  tracking-wide text-white py-1 px-2 w-1/3">
       <p>#{formatPokedex}</p>
     </div>
-    <img
+    <Image
+    width={50}
+    height={50}
       className="card-img-top img-fluid self-center"
       src={imageUrl}
       alt={`${name} sprite`}
