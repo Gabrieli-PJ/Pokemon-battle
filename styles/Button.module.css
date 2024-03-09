@@ -1,0 +1,77 @@
+/* Dropdown.css */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .toggle {
+    background-color: #ed8936;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    letter-spacing: 0.1em;
+    border-bottom: solid;
+    border-bottom-width: 4px;
+    border-color: #9c4221;
+    border-radius: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  
+  
+  
+  .toggle:hover {
+    background-color: #dd6b20;
+    color: #fff;
+    letter-spacing: 0.1em;
+    border-bottom: solid;
+    border-bottom-width: 4px;
+    border-color: #7b341e;
+    padding: 8px 16px;
+    border-radius: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .menu {
+    align-items: center;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right:5%;
+    word-break: break-all;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .menu img {
+    width: 30px;
+    margin-right: 3px;
+  }
+  
+  .menu a {
+    display: flex;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+  }
+  
+  .menu a:hover {
+    background-color: #f1f1f1;
+  }
