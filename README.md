@@ -8,7 +8,7 @@ O objetivo da PokeBattle é simples: _garantir que você esteja sempre preparado
 Além das informações sobre o seu time, você também poderá ver informações de todos os Pokemons, incluindo todos os movimentos que eles podem aprender, estatisticas de vida e poder, quais são suas fraquezas e contra quem eles se destacam em batalha.
 
 > [!IMPORTANT]
-> Você pode acessar o site [a partir deste link](pokemon-battle-rho.vercel.app) 
+> Você pode acessar o site [a partir deste link](https://pokemon-battle-rho.vercel.app) 
 
 ## Progresso da aplicação
 
