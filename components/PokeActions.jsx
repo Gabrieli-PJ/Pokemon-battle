@@ -1,10 +1,12 @@
 // PokeActions
-import Link from "next/link";
+import Link from 'next/link'
+import { React } from 'react'
+import PropTypes from 'prop-types'
 
-export default function PokeAction({ pokemonName }) {
-    const formattedPokemonName = pokemonName ? pokemonName.toLowerCase() : '';
+export default function PokeAction ({ pokemonName }) {
+  const formattedPokemonName = pokemonName ? pokemonName.toLowerCase() : ''
 
-    return (
+  return (
         <>
             <div className="self-center m-2">
                 <Link href={`/pokemon/${formattedPokemonName}`}>
@@ -14,5 +16,8 @@ export default function PokeAction({ pokemonName }) {
                 </Link>
             </div>
         </>
-    );
+  )
+}
+PokeAction.propTypes = {
+  pokemonName: PropTypes.string
 }

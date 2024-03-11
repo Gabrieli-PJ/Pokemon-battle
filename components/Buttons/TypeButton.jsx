@@ -1,56 +1,55 @@
 // TypeButton.jsx
-import Link from "next/link";
-import axios from 'axios';
-import { FaAngleDown } from "react-icons/fa";
-import { useState, useEffect, useRef } from "react";
-import styles from "@/styles/Button.module.css"
-
+import Link from 'next/link'
+import axios from 'axios'
+import { FaAngleDown } from 'react-icons/fa'
+import { useState, useEffect, useRef, React } from 'react'
+import styles from '@/styles/Button.module.css'
 
 const TypeButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [type, setTypes] = useState([]);
-  const dropdownRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const [type, setTypes] = useState([])
+  const dropdownRef = useRef(null)
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   const closeDropdown = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setIsOpen(false);
+      setIsOpen(false)
     }
-  };
+  }
 
   useEffect(() => {
-    document.addEventListener("click", closeDropdown);
+    document.addEventListener('click', closeDropdown)
 
     return () => {
-      document.removeEventListener("click", closeDropdown);
-    };
-  }, []);
+      document.removeEventListener('click', closeDropdown)
+    }
+  }, [])
   useEffect(() => {
     const fetchType = async () => {
-        try {
-            const response = await axios.get(`https://pokeapi.co/api/v2/type?limit=18`);
-            const ResponseList = response.data.results;
+      try {
+        const response = await axios.get('https://pokeapi.co/api/v2/type?limit=18')
+        const ResponseList = response.data.results
 
-            const typeDetailPromises = ResponseList.map(async (region) => {
-                const typeDetailsResponse = await axios.get(region.url);
-                return {
-                    id: typeDetailsResponse.data.id,
-                    types: typeDetailsResponse.data.name,
-                };
-            });
+        const typeDetailPromises = ResponseList.map(async (region) => {
+          const typeDetailsResponse = await axios.get(region.url)
+          return {
+            id: typeDetailsResponse.data.id,
+            types: typeDetailsResponse.data.name
+          }
+        })
 
-            const typeDetails = await Promise.all(typeDetailPromises);
-            setTypes(typeDetails);
-        } catch (error) {
-            console.error('Error fetching Pokemon data:', error);
-        }
-    };
+        const typeDetails = await Promise.all(typeDetailPromises)
+        setTypes(typeDetails)
+      } catch (error) {
+        console.error('Error fetching Pokemon data:', error)
+      }
+    }
 
-    fetchType();
-  }, []);
+    fetchType()
+  }, [])
 
   return (
     <div ref={dropdownRef} className={styles.dropdown}>
@@ -72,7 +71,7 @@ const TypeButton = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TypeButton;
+export default TypeButton

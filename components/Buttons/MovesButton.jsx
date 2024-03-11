@@ -1,12 +1,13 @@
 // components/StatsButton.jsx
-import { useState } from 'react';
+import { useState, React } from 'react'
+import PropTypes from 'prop-types'
 
 const MovesButton = ({ moves }) => {
-  const [showMoves, setShowMoves] = useState(false);
+  const [showMoves, setShowMoves] = useState(false)
 
   const toggleMoves = () => {
-    setShowMoves(!showMoves);
-  };
+    setShowMoves(!showMoves)
+  }
 
   return (
     <div>
@@ -26,7 +27,25 @@ const MovesButton = ({ moves }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default MovesButton;
+MovesButton.propTypes = {
+  moves: PropTypes.arrayOf(
+    PropTypes.shape({
+      move: PropTypes.shape({
+        name: PropTypes.string.isRequired
+      }).isRequired,
+      version_group_details: PropTypes.arrayOf(
+        PropTypes.shape({
+          move_learn_method: PropTypes.shape({
+            name: PropTypes.string.isRequired
+          }).isRequired,
+          level_learned_at: PropTypes.number.isRequired
+        })
+      ).isRequired
+    })
+  ).isRequired
+}
+
+export default MovesButton

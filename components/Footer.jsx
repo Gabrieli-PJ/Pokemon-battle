@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-import { MdCatchingPokemon } from "react-icons/md";
+import { FaGithub } from 'react-icons/fa'
+import { React } from 'react'
+import { MdCatchingPokemon } from 'react-icons/md'
 
-export default function Footer() {
-    return (
+export default function Footer () {
+  return (
 
         <footer className="relative bottom-0 left-0 w-full bg-yellow-200 border-t-4 border-yellow-400 p-4">
             <a href="https://github.com/Gabrieli-PJ" className="flex flex-row items-center justify-center">
@@ -15,5 +15,5 @@ export default function Footer() {
             <h2 className="text-2xl text-blue-900">PokeApi.co</h2>
             </a>
         </footer>
-    )
+  )
 }

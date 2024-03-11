@@ -1,12 +1,13 @@
 // components/StatsButton.jsx
-import { useState } from 'react';
+import { useState, React } from 'react'
+import PropTypes from 'prop-types'
 
 const StatsButton = ({ stats }) => {
-  const [showStats, setShowStats] = useState(false);
+  const [showStats, setShowStats] = useState(false)
 
   const toggleStats = () => {
-    setShowStats(!showStats);
-  };
+    setShowStats(!showStats)
+  }
 
   return (
     <div>
@@ -24,7 +25,18 @@ const StatsButton = ({ stats }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default StatsButton;
+StatsButton.propTypes = {
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      stat: PropTypes.shape({
+        name: PropTypes.string.isRequired
+      }).isRequired,
+      base_stat: PropTypes.number.isRequired
+    })
+  ).isRequired
+}
+
+export default StatsButton
