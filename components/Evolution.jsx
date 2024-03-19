@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Image from 'next/image'
+import PropTypes from 'prop-types'
 import { FaRegArrowAltCircleRight } from 'react-icons/fa'
 import Link from 'next/link'
 
@@ -90,6 +91,10 @@ const Evolution = ({ id }) => {
       ))}
     </>
   )
+}
+
+Evolution.propTypes = {
+  id: PropTypes.number.isRequired
 }
 
 export default Evolution

@@ -11,8 +11,8 @@ const PokeCard = ({ name, types, imageUrl, id, height, weight, abilities }) => {
     return number.toString().padStart(4, '0')
   }
 
-  const formattedHeight = `${(height / 10).toFixed(1)} m`;
-  const formattedWeight = `${(weight / 10).toFixed(1)} kg`;
+  const formattedHeight = `${(height / 10).toFixed(1)} m`
+  const formattedWeight = `${(weight / 10).toFixed(1)} kg`
 
   const getTypeColor = (type) => {
     switch (type.toLowerCase()) {
