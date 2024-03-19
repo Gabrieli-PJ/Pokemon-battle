@@ -7,6 +7,7 @@ import Head from 'next/head'
 import PokeCard from '@/components/PokeCard'
 import StatsButton from '@/components/Buttons/StatsButton'
 import MovesButton from '@/components/Buttons/MovesButton'
+import typeEffectiveness from '@/data/typesWS.json'
 
 const PokemonPage = () => {
   const router = useRouter()
@@ -23,7 +24,8 @@ const PokemonPage = () => {
           name: response.data.name,
           id: response.data.id,
           height: response.data.height,
-          types: response.data.types.map((type) => type.type.name),
+          weight: response.data.weight,
+          types: response.data.types.map((type) => type.type.name.toUpperCase()),
           abilities: response.data.abilities.map((ability) => ability.ability.name),
           imageUrl: response.data.sprites?.other['official-artwork'].front_default,
           stats: response.data.stats,
@@ -52,8 +54,8 @@ const PokemonPage = () => {
       {loading
         ? (<Loading />)
         : (
-        <div className='container'>
-          <PokeCard key={details.name} {...details} />
+        <div className='flex flex-col w-full justify-center items-center'>
+          <PokeCard key={details.name} {...details} typeEffectiveness={typeEffectiveness} />
           {/* Stats Button */}
           <StatsButton stats={details.stats} />
           <MovesButton moves={details.moves} />

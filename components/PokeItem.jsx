@@ -58,8 +58,8 @@ const PokemonItem = ({ name, types, imageUrl, id }) => {
       <p>#{formatPokedex}</p>
     </div>
     <Image
-    width={50}
-    height={50}
+    width={95}
+    height={95}
       className="card-img-top img-fluid self-center"
       src={imageUrl}
       alt={`${name} sprite`}

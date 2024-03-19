@@ -8,7 +8,7 @@ import VersionButton from './Buttons/GameButton'
 export default function NavHome () {
   return (
 
-        <nav className="flex flex-wrap items-center justify-between bg-yellow-200 border-b-4 border-yellow-400">
+        <nav className="flex flex-wrap items-center justify-between bg-yellow-200 border-b-4 p-2 border-yellow-400">
             <Link href={'/'} className="flex row items-center ">
                 <Image
                     src={Logo}
