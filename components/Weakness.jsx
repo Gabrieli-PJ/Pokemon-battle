@@ -72,11 +72,11 @@ const Weaknesses = ({ types, typeEffectiveness }) => {
 
   return (
 
-    <div className='p-3 m-1 bg-yellow-100 rounded-lg'>
+    <div className='p-3 lg:w-2/3 sm:w-full m-1 bg-yellow-100 rounded-lg'>
           <h2 className='px-4 mb-1 py-2 text-2xl bg-yellow-200 rounded-lg'>Fraquezas</h2>
-          <p className="px-4 py-2 text-xl">
+          <p className="flex flex-wrap justify-center content-center px-4 py-2 text-xl">
           {[...allWeaknesses].map((type, index) => (
-          <Link href={`/types/${type.toLowerCase()}`} key={index} className={`mr-2 p-1 px-3 rounded-full text-center w-1/2 ${getTypeColor(type.toLowerCase())}`}>
+          <Link href={`/types/${type.toLowerCase()}`} key={index} className={`mr-2 mb-2 p-1 px-3 rounded-full text-center lg:w-1/5 sm:w-1/2 ${getTypeColor(type.toLowerCase())}`}>
             {type.toLowerCase()}
           </Link>
           ))}

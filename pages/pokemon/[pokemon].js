@@ -26,7 +26,11 @@ const PokemonPage = () => {
           height: response.data.height,
           weight: response.data.weight,
           types: response.data.types.map((type) => type.type.name.toUpperCase()),
-          abilities: response.data.abilities.map((ability) => ability.ability.name),
+          abilities: await Promise.all(response.data.abilities.map(async (ability) => {
+            const abilityResponse = await axios.get(ability.ability.url)
+            const englishAbility = abilityResponse.data.effect_entries.find(entry => entry.language.name === 'en')
+            return englishAbility ? { name: ability.ability.name, effect: englishAbility.effect } : null
+          }).filter(Boolean)),
           imageUrl: response.data.sprites?.other['official-artwork'].front_default,
           stats: response.data.stats,
           moves: response.data.moves
@@ -54,12 +58,12 @@ const PokemonPage = () => {
       {loading
         ? (<Loading />)
         : (
-        <div className='flex flex-col w-full justify-center items-center'>
-          <PokeCard key={details.name} {...details} typeEffectiveness={typeEffectiveness} />
-          {/* Stats Button */}
-          <StatsButton stats={details.stats} />
-          <MovesButton moves={details.moves} />
-        </div>
+          <section className=''>
+            <PokeCard key={details.name} {...details} typeEffectiveness={typeEffectiveness} />
+            {/* Stats Button */}
+            <StatsButton stats={details.stats} />
+            <MovesButton moves={details.moves} />
+          </section>
           )}
     </>
   )

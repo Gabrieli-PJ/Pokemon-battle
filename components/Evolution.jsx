@@ -17,7 +17,6 @@ const Evolution = ({ id }) => {
         const evolutionResponse = await axios.get(evolutionChainUrl)
         const evolutionChain = evolutionResponse.data.chain
 
-        // Função para extrair as informações de evolução de cada espécie de Pokémon
         const extractEvolutions = async (chain, currentEvolutions = []) => {
           if (chain) {
             const currentSpecies = {
@@ -52,7 +51,6 @@ const Evolution = ({ id }) => {
           return currentEvolutions
         }
 
-        // Extrair as informações de evolução da cadeia de evolução
         const allEvolutions = await extractEvolutions(evolutionChain)
 
         setEvolutions(allEvolutions)
@@ -64,7 +62,6 @@ const Evolution = ({ id }) => {
     fetchEvolutions()
   }, [id])
 
-  // Filtrar evoluções únicas por id
   const uniqueEvolutions = evolutions.filter((evolution, index, self) =>
     index === self.findIndex(e => e.id === evolution.id)
   )
@@ -75,8 +72,8 @@ const Evolution = ({ id }) => {
         <div key={evolution.id} className='flex justify-center items-center'>
           <Link href={`${evolution.name}`} className='px-5'>
             <Image
-              width={100}
-              height={100}
+              width={150}
+              height={150}
               src={evolution.imageUrl}
               alt={evolution.name}
             />
