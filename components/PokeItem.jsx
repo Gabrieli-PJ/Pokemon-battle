@@ -53,7 +53,7 @@ const getTypeColor = (type) => {
 const PokemonItem = ({ name, types, imageUrl, id }) => {
   const formatPokedex = formatPokedexNumber(id) || 'undefined'
 
-  return (<div className="flex flex-col bg-yellow-100 justify-between lg:m-3 m-1 flex-wrap max-w-sm w-full lg:w-1/5 md:w-2/5 rounded lg:p-4 p-2 overflow-hidden shadow-lg" >
+  return (<div className="flex flex-col bg-yellow-100 justify-between lg:m-3 md:m-2 m-1 flex-wrap max-w-sm w-full lg:w-1/5 md:w-2/5 rounded lg:p-4 p-2 overflow-hidden shadow-lg" >
     <div className="rounded border-2 border-red-500 bg-red-400 tracking-wide text-white text-xl py-1 px-2 w-1/3">
       <p>#{formatPokedex}</p>
     </div>
