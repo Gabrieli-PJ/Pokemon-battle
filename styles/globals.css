@@ -1,4 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*,
+::before,
+::after {
+  border-width: 0;
+}
 
+
+.dropdown ::-webkit-scrollbar {
+    width: 15px;
+}
+
+.dropdown ::-webkit-scrollbar-thumb {
+    background-color: #be5732;
+    border-radius: 10px;
+}
+
+.dropdown ::-webkit-scrollbar-track {
+    background-color: #ffdec4;
+    border-radius: 10px;
+}

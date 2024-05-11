@@ -1,4 +1,3 @@
-// components/PokeList.js
 import { useState, useEffect, React } from 'react'
 import axios from 'axios'
 import PokemonItem from './PokeItem'
@@ -11,6 +10,7 @@ const PokeList = () => {
   const [loading, setLoading] = useState(true)
   const [pokemons, setPokemons] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -18,7 +18,7 @@ const PokeList = () => {
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      await new Promise(resolve => setTimeout(resolve, 3000))
+      setLoading(true)
       try {
         const offset = (currentPage - 1) * PAGE_SIZE
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${PAGE_SIZE}`)
@@ -43,8 +43,12 @@ const PokeList = () => {
 
         const defaultPokemonDetails = pokemonDetails.filter(pokemon => pokemon.isDefault)
         setPokemons(defaultPokemonDetails)
+
+        // Define o número total de páginas com base no número total de Pokémon na API
+        setTotalPages(Math.ceil(response.data.count / PAGE_SIZE))
       } catch (error) {
         console.error('Error fetching Pokemon data:', error)
+        setLoading(false)
       }
     }
 
@@ -52,7 +56,7 @@ const PokeList = () => {
   }, [currentPage])
 
   const goToNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1)
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
   }
 
   const goToPreviousPage = () => {
@@ -60,30 +64,30 @@ const PokeList = () => {
   }
 
   return (
-<div>
+    <div>
       {loading
         ? (
         <Loading />
           )
         : (
-    <div className='py-2 my-2 flex-col flex-wrap'>
-      <ul className='flex flex-wrap flex-row justify-center w-full p-2'>
-        {pokemons.map((pokemon) => (
-          <PokemonItem key={pokemon.name} {...pokemon} />
-        ))}
-      </ul>
-      <div className='flex justify-center content-center items-center'>
-        <button className='text-4xl' onClick={goToPreviousPage} disabled={currentPage === 1}>
-          <GrFormPrevious />
-        </button>
-        <span className='text-xl'> Page {currentPage} </span>
-        <button className='text-4xl' onClick={goToNextPage}>
-          <GrFormNext />
-        </button>
-      </div>
-    </div>
+        <div className='py-2 my-2 flex-col flex-wrap'>
+          <ul className='flex flex-wrap flex-row justify-center w-full p-2'>
+            {pokemons.map((pokemon) => (
+              <PokemonItem key={pokemon.name} {...pokemon} />
+            ))}
+          </ul>
+          <div className='flex justify-center content-center items-center'>
+            <button className='text-4xl' onClick={goToPreviousPage} disabled={currentPage === 1}>
+              <GrFormPrevious />
+            </button>
+            <span className='text-xl'> Page {currentPage} </span>
+            <button className='text-4xl' onClick={goToNextPage} disabled={currentPage === totalPages}>
+              <GrFormNext />
+            </button>
+          </div>
+        </div>
           )}
-  </div>
+    </div>
   )
 }
 

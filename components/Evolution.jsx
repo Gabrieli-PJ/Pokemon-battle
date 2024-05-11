@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Image from 'next/image'
 import PropTypes from 'prop-types'
-import { FaRegArrowAltCircleRight } from 'react-icons/fa'
+import { FaRegArrowAltCircleRight, FaRegArrowAltCircleDown } from 'react-icons/fa'
 import Link from 'next/link'
 
 const Evolution = ({ id }) => {
@@ -69,7 +69,7 @@ const Evolution = ({ id }) => {
   return (
     <>
       {uniqueEvolutions.map((evolution, index) => (
-        <div key={evolution.id} className='flex justify-center items-center'>
+        <div key={evolution.id} className='flex lg:flex-row flex-col justify-center items-center'>
           <Link href={`${evolution.name}`} className='px-5'>
             <Image
               width={150}
@@ -77,12 +77,17 @@ const Evolution = ({ id }) => {
               src={evolution.imageUrl}
               alt={evolution.name}
             />
-            <p>{evolution.name}</p>
+            <p>{evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)}</p>
           </Link>
           {index < uniqueEvolutions.length - 1 && (
-            <div className='px-2 text-3xl text-yellow-600'>
-              <FaRegArrowAltCircleRight />
-            </div>
+            <section>
+              <div className='py-2 text-3xl lg:hidden inline-flex text-yellow-600'>
+                <FaRegArrowAltCircleDown />
+              </div>
+              <div className='px-2 text-3xl lg:inline-flex hidden text-yellow-600'>
+                <FaRegArrowAltCircleRight />
+              </div>
+            </section>
           )}
         </div>
       ))}

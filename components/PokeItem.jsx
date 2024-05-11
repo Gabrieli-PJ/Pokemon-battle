@@ -53,18 +53,18 @@ const getTypeColor = (type) => {
 const PokemonItem = ({ name, types, imageUrl, id }) => {
   const formatPokedex = formatPokedexNumber(id) || 'undefined'
 
-  return (<div className="flex flex-col bg-yellow-100 justify-between lg:m-3 md:m-2 m-1 flex-wrap max-w-sm w-full lg:w-1/5 md:w-2/5 rounded lg:p-4 p-2 overflow-hidden shadow-lg" >
-    <div className="rounded border-2 border-red-500 bg-red-400 tracking-wide text-white text-xl py-1 px-2 w-1/3">
+  return (<div className="flex flex-col bg-yellow-100 justify-between lg:m-3 md:m-2 m-1 flex-wrap max-w-sm w-2/3 lg:w-1/5 md:w-2/5 rounded lg:p-4 p-2 overflow-hidden shadow-lg" >
+    <div className="rounded border-2 border-red-500 bg-red-400 tracking-wide text-white text-xl py-1 px-2 w-2/5">
       <p>#{formatPokedex}</p>
     </div>
     <Image
     width={95}
     height={95}
-      className="card-img-top w-1/3 img-fluid self-center"
+      className="card-img-top img-fluid self-center"
       src={imageUrl}
       alt={`${name} sprite`}
     />
-    <h2 className="text-center lg:text-xl text-3xl text-yellow-800 font-semibold h-75">{name}</h2>
+    <h2 className="text-center lg:text-xl text-2xl text-yellow-800 font-medium h-75">{name}</h2>
     <div className="flex flex-row m-2 items-center justify-center text-center">
       {types.map((type, index) => (
         <span key={index} className={`mr-2 p-1 px-3 rounded-full text-center w-2/5 ${getTypeColor(type)}`}>

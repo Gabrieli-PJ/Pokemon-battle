@@ -5,14 +5,12 @@ import axios from 'axios'
 import Loading from '@/components/loading'
 import Head from 'next/head'
 import PokeCard from '@/components/PokeCard'
-import StatsButton from '@/components/Buttons/StatsButton'
-import MovesButton from '@/components/Buttons/MovesButton'
+import ButtonGroup from '@/components/Buttons/buttonGroup'
 import typeEffectiveness from '@/data/typesWS.json'
 
 const PokemonPage = () => {
   const router = useRouter()
   const { pokemon } = router.query
-
   const [loading, setLoading] = useState(true)
   const [details, setDetails] = useState(null)
 
@@ -34,9 +32,7 @@ const PokemonPage = () => {
           imageUrl: response.data.sprites?.other['official-artwork'].front_default,
           stats: response.data.stats,
           moves: response.data.moves
-          // Add other essential details
         }
-
         setDetails(pokemonDetails)
         setLoading(false)
       } catch (error) {
@@ -61,8 +57,7 @@ const PokemonPage = () => {
           <section className=''>
             <PokeCard key={details.name} {...details} typeEffectiveness={typeEffectiveness} />
             {/* Stats Button */}
-            <StatsButton stats={details.stats} />
-            <MovesButton moves={details.moves} />
+            <ButtonGroup id={details.id} stats={details.stats} moves={details.moves} />
           </section>
           )}
     </>

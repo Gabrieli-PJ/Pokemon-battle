@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import { useState, useEffect, React } from 'react'
 import Router from 'next/router'
-import NavHome from '@/components/NavHome'
+import NavHome from '@/components/NavHome2'
 import Footer from '@/components/Footer'
 import PropTypes from 'prop-types'
 import Loading from '@/components/loading'
@@ -32,7 +32,7 @@ export default function App ({ Component, pageProps }) {
   }, [])
 
   if (loading) {
-    return (<div>
+    return (<div className='w-full h-full'>
       <NavHome />
       <Loading />
       <Footer />
@@ -40,7 +40,7 @@ export default function App ({ Component, pageProps }) {
   }
 
   return (
-  <><div className={`${poppins.className}`}>
+  <><div className={`${poppins.className} w-full h-full`}>
     <NavHome />
    <Component {...pageProps} />
    <Footer />
